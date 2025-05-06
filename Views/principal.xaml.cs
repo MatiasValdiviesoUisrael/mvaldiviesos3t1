@@ -10,7 +10,7 @@ public partial class principal : ContentPage
 		InitializeComponent();
 	}
 
-    private void Button_Clicked(object sender, EventArgs e)
+    private async void Button_Clicked(object sender, EventArgs e)
     {
         string tipo = pickerIdentificacion.SelectedItem?.ToString() ?? "";
         string id = entryIdentificacion.Text?.Trim() ?? "";
@@ -25,14 +25,14 @@ public partial class principal : ContentPage
             !double.TryParse(salarioTexto, out salario) || salario <= 0 ||
             !Regex.IsMatch(correo, @"^[\w\-\.]+@([\w-]+\.)+[\w-]{2,4}$"))
         {
-            DisplayAlert("Error", "Por favor, completa todos los campos correctamente.", "OK");
+            await DisplayAlert("Error", "Por favor, completa todos los campos correctamente.", "OK");
             return;
         }
 
         if (tipo == "CI" && !Regex.IsMatch(id, @"^\d{10}$") ||
             tipo == "RUC" && !Regex.IsMatch(id, @"^\d{13}$"))
         {
-            DisplayAlert("Error", "Formato de identificación inválido.", "OK");
+            await DisplayAlert("Error", "Formato de identificación inválido.", "OK");
             return;
         }
 
@@ -44,6 +44,6 @@ public partial class principal : ContentPage
         contacto.Correo = correo;
         contacto.Salario = salario;
 
-        Navigation.PushAsync(new VistaVisualizacion());
+        await Navigation.PushAsync(new Views.VistaVisualizacion());
     }
 }
