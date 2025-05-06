@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="mvaldiviesos3t1.Views.principal"
+             Title="principal">
+
+    <ContentPage.Resources>
+        <Style TargetType="Entry">
+            <Setter Property="TextColor" Value="DarkBlue"/>
+            <Setter Property="FontSize" Value="14"/>
+        </Style>
+        <Style TargetType="Label">
+            <Setter Property="FontAttributes" Value="Bold"/>
+        </Style>
+    </ContentPage.Resources>
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="20">
+            <Label Text="Tipo de Identificación" />
+            <Picker x:Name="pickerIdentificacion">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+            <x:String>CI</x:String>
+            <x:String>RUC</x:String>
+            <x:String>Pasaporte</x:String>
+            </x:Array>
+            </Picker.ItemsSource>
+            </Picker>
+
+            <Label Text="Identificación"/>
+            <Entry x:Name="entryIdentificacion" Keyboard="Numeric"/>
+
+            <Label Text="Nombres"/>
+            <Entry x:Name="entryNombres"/>
+
+            <Label Text="Apellidos"/>
+            <Entry x:Name="entryApellidos"/>
+
+            <Label Text="Fecha"/>
+            <DatePicker x:Name="dateFecha"/>
+
+            <Label Text="Correo"/>
+            <Entry x:Name="entryCorreo" Keyboard="Email"/>
+
+            <Label Text="Salario"/>
+            <Entry x:Name="entrySalario" Keyboard="Numeric"/>
+
+            <Button Text="Guardar" Clicked="Button_Clicked"/>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
